@@ -11,7 +11,7 @@ package librarysystem;
  * @author zero
  */
 public class Faculty extends User{
-    private String courseReserves[];
+    private String[] courseReserves;
 
     public String[] getCourseReserves() {
         return courseReserves;
@@ -22,7 +22,7 @@ public class Faculty extends User{
     }
     
     //We can need a method to create reservers.
-    public void createReserves(){
+    public void createReserves(int mediaID){
     //we need to edit to fit the media table
     }
     
@@ -30,8 +30,9 @@ public class Faculty extends User{
 public Faculty(String facultyID, String facultyPass){
         super(2, facultyID, facultyPass);
         
+        String[] mediaArray = {"book","DVD"};
         //We set the Reservers that are part of the Faculty
-        setCourseReserves("String of arrays go here");
+        setCourseReserves(mediaArray);
         
         
     }

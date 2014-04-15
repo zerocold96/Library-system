@@ -95,7 +95,9 @@ public class User {
         //we run query to find table using the categoryID
         Statement stmt = getCon().createStatement();
         
-        ResultSet set = stmt.executeQuery("SELECT userCategoryName from user where userCategoryID ="+getUserCategoryID());
+        //we query the category table
+        ResultSet set = stmt.executeQuery("SELECT userCategoryName from category where userCategoryID = '"+getUserCategoryID() +"';");
+        set.next();
         setUserCategoryName(set.getString("userCategoryName"));
         
         //we set the userCategoryName to the one found by using the ID  
@@ -106,9 +108,12 @@ public class User {
     
     private boolean isConnected(){
         try{
-            String url = "jdbc:mysql://localhost:3306/mysql";
+            String url =
+ "jdbc:mysql://localhost:3306/library";
 
-            setCon(DriverManager.getConnection(url,"root", "123456"));
+            setCon(
+ DriverManager.getConnection(
+ url,"root", "123456"));
             
         }catch(Exception e){
             e.printStackTrace();
@@ -135,15 +140,16 @@ public class User {
         
         //to get the result from query you must run something like this:
         //Result rs = stmt.executeQuery("SELEC* FROM table1");
-        //rs will be scrollable and updateble.
-        ResultSet set = stmt.executeQuery("SELECT *, COUNT(*) as 'count' FROM" + getUserCategoryName() + "WHERE id =" +getID() + " AND pass ="+getPass());
+        //rs will be scrollable and updateble. 
+        ResultSet set = stmt.executeQuery("SELECT *, COUNT(*) as 'count' FROM "+ getUserCategoryName() +" WHERE id =" +getID() + " AND pass = '"+getPass()+"';");
         
         //if the query ran and we have more content than an array of 1;
-        if(set.getString("count") != null){
-        setFirstName(set.getString("firstName"));
-        setLastName(set.getString("lastName"));
-        }else{
+        set.next();
+        if(set.getString("count") == null){
             setError("The User and password don't match.!");
+        }else{
+            setFirstName(set.getString("firstName"));
+            setLastName(set.getString("lastName"));
         }
         
         }catch(Exception e){
@@ -171,6 +177,8 @@ public class User {
             
             //we need to find out if the user actually exist in the database
             setUserCategoryID(categoryID);
+            findCategoryTable(categoryID);
+            setPass(pass);
             setID(ID);
             //we need to validate the password.
             
