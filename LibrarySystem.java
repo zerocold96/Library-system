@@ -6,6 +6,8 @@
 
 package librarysystem;
 
+import javax.swing.JFrame;
+
 /**
  *
  * @author zero
@@ -19,6 +21,7 @@ public class LibrarySystem {
         // TODO code application logic here
         
         //create one of each
+        /*
         Student student = new Student("ID", "pass");
         if(student.isLoggedin()){
             System.out.println("Welcome");
@@ -38,11 +41,20 @@ public class LibrarySystem {
         if(admin.isLoggedin()){
             System.out.println("Welcome");
         }
+        */
         
         User user1 =  new User(1,"2020", "pass2");
         if(user1.isLoggedin()){
             
-        System.out.println("first Name: " + user1.getFirstName());
+        System.out.println(" First Name: " + user1.getFirstName() +"\n Last Name: " + user1.getLastName());
+        
+        Login panel = new Login( );
+
+	JFrame librarySystem = new JFrame(); // creates a new JFrame
+	librarySystem.getContentPane().add( panel); // add the panel to the frame
+	librarySystem.setSize( 900,600 ); // set the desired size
+	librarySystem.setVisible( true ); // show the frame
+	librarySystem.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
         }
     }
     

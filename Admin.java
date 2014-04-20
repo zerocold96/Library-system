@@ -13,7 +13,7 @@ import java.sql.*;
  */
 public class Admin extends Member{
     User[] users;
-    Connection con;
+ 
     
     //add new user query here
     public boolean addUser(User user){

@@ -25,9 +25,9 @@ public class Member extends User{
     private String[] issues;
     private Holds allHolds;
     
-    public boolean removeHolds(Holds holds){
-    
-        return true;
+    public boolean removeHolds(User user, Holds holds){
+        //we need to fix this so we can remove holds without calling a object
+        return holds.removeHolds(user, holds);
     }
     
     public void viewHolds(){
