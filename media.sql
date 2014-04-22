@@ -12,11 +12,11 @@ CREATE TABLE IF NOT EXISTS `book` (
 -- Dumping data for table `book`
 --
 
-INSERT INTO `book` (`ID`, `title`, `author`, `genre`) VALUES
-('1115', 'ScrewTape Letters', 'Lewis', 'Fiction'),
-('1112', 'Huckleberry Fin', 'Tom Sawyer', 'Fiction'),
-('1113', 'Encyclopedia', 'multiple', 'NonFiction'),
-('1114', 'Vogue', 'cahllahan', 'Entertainment');
+INSERT INTO `book` (`ID`, `title`, `author`, `genre`, `ISBN`) VALUES
+('1115', 'ScrewTape Letters', 'Lewis', 'Fiction',''),
+('1112', 'Huckleberry Fin', 'Tom Sawyer', 'Fiction',''),
+('1113', 'Encyclopedia', 'multiple', 'NonFiction',''),
+('1114', 'Vogue', 'cahllahan', 'Entertainment','');
 
 -- --------------------------------------------------------
 
@@ -56,7 +56,7 @@ CREATE TABLE IF NOT EXISTS `movie` (
 -- Dumping data for table `movie`
 --
 
-INSERT INTO `movie` (`ID`, `title`, `author`, `genre`) VALUES
+INSERT INTO `movie` (`ID`, `title`, `director`, `genre`) VALUES
 ('1000', 'Pirates of the Carribean', 'smith', 'action'),
 ('2000', 'Dude where my car', 'apple', 'comedy'),
 ('3000', 'scream', 'james', 'horror'),
@@ -80,7 +80,7 @@ CREATE TABLE IF NOT EXISTS `cd` (
 -- Dumping data for table `cd`
 --
 
-INSERT INTO `cd` (`ID`, `title`, `author`, `genre`) VALUES
+INSERT INTO `cd` (`ID`, `title`, `artist`, `genre`) VALUES
 ('7777', 'release', 'smith', 'rock'),
 ('8888', 'remember', 'apple', 'gospel'),
 ('9999', 'forget', 'james', 'country'),
