@@ -9,7 +9,7 @@ public static void main(String[] args) {
 FacultyPage frameTabel = new FacultyPage();
 }
 
-JLabel welcome = new JLabel("Welcome to a The Library System");
+JLabel welcome = new JLabel("Welcome Faculty to a The Library System");
 JPanel panel = new JPanel();
 
 FacultyPage(){
