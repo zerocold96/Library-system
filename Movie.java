@@ -15,6 +15,7 @@ import java.sql.Statement;
  */
 public class Movie extends Media{
 
+    Movie[] movies;
     private String director;
 
     public String getDirector() {
@@ -25,18 +26,16 @@ public class Movie extends Media{
         this.director = director;
     }
 
-    public boolean searchByID(String ID, Movie[] movie) {
-        //we open the connection.  
+    public boolean searchByID(String ID) {
+         //we open the connection.  
     if(this.isConnected()){
         try{
         //we create the statement 
         Statement stmt = getCon().createStatement();
         
         //we query the category table
-        ResultSet set = stmt.executeQuery("SELECT * FROM cd WHERE id = '" + ID + "';");
+        ResultSet set = stmt.executeQuery("SELECT * FROM movie WHERE ID = '" + ID + "';");
         
-        //We close the connection.
-        this.isClose();
         
         //We populate the array with all the element of the set.
         
@@ -44,23 +43,32 @@ public class Movie extends Media{
         set.last();
         
         //we get the row number and assigned it as the total size of element in the array.
-        movie = new Movie[set.getRow()];
+        //book = new Book[set.getRow()];
+        this.movies = new Movie[set.getRow()];
         
         //We set the set cursor back to the first element.
         set.first();
-      
+        
         //do- while loop will work here.
         do{
-        movie[set.getRow() -1 ].setId(set.getString("ID"));
-        movie[set.getRow() -1 ].setTitle(set.getString("title"));
-        movie[set.getRow() -1 ].setGenre(set.getString("genre"));
-        movie[set.getRow() -1 ].setDirector(set.getString("director")); 
-    
+        this.movies[set.getRow() -1 ] = new Movie();
+        this.movies[set.getRow() -1].setId(set.getString("ID"));
+        this.movies[set.getRow() -1 ].setTitle(set.getString("title"));
+        this.movies[set.getRow() -1 ].setGenre(set.getString("genre"));
+        this.movies[set.getRow() -1 ].setDirector(set.getString("director"));
+        //book[set.getRow() -1 ].setIsbn(set.getString("ISBN"));
         
         }while(set.next());
         
+        //We close the connection.
+        this.isClose();
+        
         }catch(Exception e){
+            
+            System.out.println("the exception in searchByGenre was called.");
             e.printStackTrace();
+            //We close the connection.
+            this.isClose();
             return false;
         };
         
@@ -70,7 +78,7 @@ public class Movie extends Media{
     }
 
     
-    public boolean searchByTitle(String title, Movie[] movie) {
+    public boolean searchByTitle(String title) {
          //we open the connection.  
     if(this.isConnected()){
         try{
@@ -78,10 +86,8 @@ public class Movie extends Media{
         Statement stmt = getCon().createStatement();
         
         //we query the category table
-        ResultSet set = stmt.executeQuery("SELECT * FROM cd WHERE id = '" + title + "';");
+        ResultSet set = stmt.executeQuery("SELECT * FROM movie WHERE title = '" + title + "';");
         
-        //We close the connection.
-        this.isClose();
         
         //We populate the array with all the element of the set.
         
@@ -89,23 +95,32 @@ public class Movie extends Media{
         set.last();
         
         //we get the row number and assigned it as the total size of element in the array.
-        movie = new Movie[set.getRow()];
+        //book = new Book[set.getRow()];
+        this.movies = new Movie[set.getRow()];
         
         //We set the set cursor back to the first element.
         set.first();
-      
+        
         //do- while loop will work here.
         do{
-        movie[set.getRow() -1 ].setId(set.getString("ID"));
-        movie[set.getRow() -1 ].setTitle(set.getString("title"));
-        movie[set.getRow() -1 ].setGenre(set.getString("genre"));
-        movie[set.getRow() -1 ].setDirector(set.getString("director")); 
-    
+        this.movies[set.getRow() -1 ] = new Movie();
+        this.movies[set.getRow() -1].setId(set.getString("ID"));
+        this.movies[set.getRow() -1 ].setTitle(set.getString("title"));
+        this.movies[set.getRow() -1 ].setGenre(set.getString("genre"));
+        this.movies[set.getRow() -1 ].setDirector(set.getString("director"));
+        //book[set.getRow() -1 ].setIsbn(set.getString("ISBN"));
         
         }while(set.next());
         
+        //We close the connection.
+        this.isClose();
+        
         }catch(Exception e){
+            
+            System.out.println("the exception in searchByGenre was called.");
             e.printStackTrace();
+            //We close the connection.
+            this.isClose();
             return false;
         };
         
@@ -115,7 +130,7 @@ public class Movie extends Media{
     }
 
     
-    public boolean searchByGenre(String genre, Movie[] movie) {
+    public boolean searchByGenre(String genre) {
          //we open the connection.  
     if(this.isConnected()){
         try{
@@ -123,10 +138,8 @@ public class Movie extends Media{
         Statement stmt = getCon().createStatement();
         
         //we query the category table
-        ResultSet set = stmt.executeQuery("SELECT * FROM cd WHERE id = '" + genre + "';");
+        ResultSet set = stmt.executeQuery("SELECT * FROM movie WHERE genre = '" + genre + "';");
         
-        //We close the connection.
-        this.isClose();
         
         //We populate the array with all the element of the set.
         
@@ -134,29 +147,42 @@ public class Movie extends Media{
         set.last();
         
         //we get the row number and assigned it as the total size of element in the array.
-        movie = new Movie[set.getRow()];
+        //book = new Book[set.getRow()];
+        this.movies = new Movie[set.getRow()];
         
         //We set the set cursor back to the first element.
         set.first();
-      
+        
         //do- while loop will work here.
         do{
-        movie[set.getRow() -1 ].setId(set.getString("ID"));
-        movie[set.getRow() -1 ].setTitle(set.getString("title"));
-        movie[set.getRow() -1 ].setGenre(set.getString("genre"));
-        movie[set.getRow() -1 ].setDirector(set.getString("director")); 
-    
+        this.movies[set.getRow() -1 ] = new Movie();
+        this.movies[set.getRow() -1].setId(set.getString("ID"));
+        this.movies[set.getRow() -1 ].setTitle(set.getString("title"));
+        this.movies[set.getRow() -1 ].setGenre(set.getString("genre"));
+        this.movies[set.getRow() -1 ].setDirector(set.getString("director"));
+        //book[set.getRow() -1 ].setIsbn(set.getString("ISBN"));
         
         }while(set.next());
         
+        //We close the connection.
+        this.isClose();
+        
         }catch(Exception e){
+            
+            System.out.println("the exception in searchByGenre was called.");
             e.printStackTrace();
+            //We close the connection.
+            this.isClose();
             return false;
         };
         
         return true;
     }
         return false;
+    }
+    
+    public Movie(){
+        this.setMediaType(3);
     }
     
 }

@@ -46,7 +46,16 @@ public class LibrarySystem {
         User user1 =  new User(1,"2020", "pass2");
         if(user1.isLoggedin()){
             
-        System.out.println(" First Name: " + user1.getFirstName() +"\n Last Name: " + user1.getLastName());
+        System.out.println(" First Name: " + user1.getFirstName() +"\n Last Name: " + user1.getLastName());      
+        
+        Book book1 = new Book();
+        
+        if(book1.searchByGenre("Fiction")){
+        
+        //WHen we do a search the array of books belonging to that class gets populated.
+        System.out.println("Title: "+ book1.books[0].getAuthor() + " Author: " + book1.books[0].getAuthor() + " Genre: " + book1.books[0].getGenre() );
+        System.out.println("Title: "+ book1.books[1].getTitle() + " Author: " + book1.books[1].getAuthor() + " Genre: " + book1.books[1].getGenre() );
+        }
         
         Login panel = new Login( );
 

@@ -21,6 +21,16 @@ public class Media {
     private String title;
     private int mediaType = 0;
 
+    public int getMediaType() {
+        return mediaType;
+    }
+
+    public void setMediaType(int mediaType) {
+        this.mediaType = mediaType;
+    }
+    
+    
+
     public String getId() {
         return id;
     }

@@ -16,6 +16,7 @@ import java.sql.Statement;
 public class Cd extends Media{
     private int mediaType = 3;
     private String artist = null;
+    Cd[] cds;
 
     public String getArtist() {
         return artist;
@@ -26,7 +27,7 @@ public class Cd extends Media{
     }
 
 
-    public boolean searchByID(String ID, Cd[] cd) {
+    public boolean searchByID(String ID) {
     //we open the connection.  
     if(this.isConnected()){
         try{
@@ -34,10 +35,8 @@ public class Cd extends Media{
         Statement stmt = getCon().createStatement();
         
         //we query the category table
-        ResultSet set = stmt.executeQuery("SELECT * FROM cd WHERE id = '" + ID + "';");
+        ResultSet set = stmt.executeQuery("SELECT * FROM CD WHERE ID = '" + ID + "';");
         
-        //We close the connection.
-        this.isClose();
         
         //We populate the array with all the element of the set.
         
@@ -45,23 +44,32 @@ public class Cd extends Media{
         set.last();
         
         //we get the row number and assigned it as the total size of element in the array.
-        cd = new Cd[set.getRow()];
+        //book = new Book[set.getRow()];
+        this.cds = new Cd[set.getRow()];
         
         //We set the set cursor back to the first element.
         set.first();
-      
+        
         //do- while loop will work here.
         do{
-        cd[set.getRow() -1 ].setId(set.getString("ID"));
-        cd[set.getRow() -1 ].setTitle(set.getString("title"));
-        cd[set.getRow() -1 ].setGenre(set.getString("genre"));
-        cd[set.getRow() -1 ].setArtist(set.getString("artist")); 
-    
+        this.cds[set.getRow() -1 ] = new Cd();
+        this.cds[set.getRow() -1].setId(set.getString("ID"));
+        this.cds[set.getRow() -1 ].setTitle(set.getString("title"));
+        this.cds[set.getRow() -1 ].setGenre(set.getString("genre"));
+        this.cds[set.getRow() -1 ].setArtist(set.getString("artist"));
+        //book[set.getRow() -1 ].setIsbn(set.getString("ISBN"));
         
         }while(set.next());
         
+        //We close the connection.
+        this.isClose();
+        
         }catch(Exception e){
+            
+            System.out.println("the exception in searchByGenre was called.");
             e.printStackTrace();
+            //We close the connection.
+            this.isClose();
             return false;
         };
         
@@ -71,7 +79,7 @@ public class Cd extends Media{
     }
 
   
-    public boolean searchByTitle(String title, Cd[] cd) {
+    public boolean searchByTitle(String title) {
        //we open the connection.  
     if(this.isConnected()){
         try{
@@ -79,10 +87,8 @@ public class Cd extends Media{
         Statement stmt = getCon().createStatement();
         
         //we query the category table
-        ResultSet set = stmt.executeQuery("SELECT * FROM cd WHERE id = '" + title + "';");
+        ResultSet set = stmt.executeQuery("SELECT * FROM CD WHERE title = '" + title + "';");
         
-        //We close the connection.
-        this.isClose();
         
         //We populate the array with all the element of the set.
         
@@ -90,23 +96,32 @@ public class Cd extends Media{
         set.last();
         
         //we get the row number and assigned it as the total size of element in the array.
-        cd = new Cd[set.getRow()];
+        //book = new Book[set.getRow()];
+        this.cds = new Cd[set.getRow()];
         
         //We set the set cursor back to the first element.
         set.first();
-      
+        
         //do- while loop will work here.
         do{
-        cd[set.getRow() -1 ].setId(set.getString("ID"));
-        cd[set.getRow() -1 ].setTitle(set.getString("title"));
-        cd[set.getRow() -1 ].setGenre(set.getString("genre"));
-        cd[set.getRow() -1 ].setArtist(set.getString("artist")); 
-    
+        this.cds[set.getRow() -1 ] = new Cd();
+        this.cds[set.getRow() -1].setId(set.getString("ID"));
+        this.cds[set.getRow() -1 ].setTitle(set.getString("title"));
+        this.cds[set.getRow() -1 ].setGenre(set.getString("genre"));
+        this.cds[set.getRow() -1 ].setArtist(set.getString("artist"));
+        //book[set.getRow() -1 ].setIsbn(set.getString("ISBN"));
         
         }while(set.next());
         
+        //We close the connection.
+        this.isClose();
+        
         }catch(Exception e){
+            
+            System.out.println("the exception in searchByGenre was called.");
             e.printStackTrace();
+            //We close the connection.
+            this.isClose();
             return false;
         };
         
@@ -116,7 +131,7 @@ public class Cd extends Media{
     }
 
 
-    public boolean searchByGenre(String genre, Cd[] cd) {
+    public boolean searchByGenre(String genre) {
        //we open the connection.  
     if(this.isConnected()){
         try{
@@ -124,10 +139,8 @@ public class Cd extends Media{
         Statement stmt = getCon().createStatement();
         
         //we query the category table
-        ResultSet set = stmt.executeQuery("SELECT * FROM cd WHERE id = '" + genre + "';");
+        ResultSet set = stmt.executeQuery("SELECT * FROM CD WHERE genre = '" + genre + "';");
         
-        //We close the connection.
-        this.isClose();
         
         //We populate the array with all the element of the set.
         
@@ -135,28 +148,43 @@ public class Cd extends Media{
         set.last();
         
         //we get the row number and assigned it as the total size of element in the array.
-        cd = new Cd[set.getRow()];
+        //book = new Book[set.getRow()];
+        this.cds = new Cd[set.getRow()];
         
         //We set the set cursor back to the first element.
         set.first();
-      
+        
         //do- while loop will work here.
         do{
-        cd[set.getRow() -1 ].setId(set.getString("ID"));
-        cd[set.getRow() -1 ].setTitle(set.getString("title"));
-        cd[set.getRow() -1 ].setGenre(set.getString("genre"));
-        cd[set.getRow() -1 ].setArtist(set.getString("artist")); 
-    
+        this.cds[set.getRow() -1 ] = new Cd();
+        this.cds[set.getRow() -1].setId(set.getString("ID"));
+        this.cds[set.getRow() -1 ].setTitle(set.getString("title"));
+        this.cds[set.getRow() -1 ].setGenre(set.getString("genre"));
+        this.cds[set.getRow() -1 ].setArtist(set.getString("artist"));
+        //book[set.getRow() -1 ].setIsbn(set.getString("ISBN"));
         
         }while(set.next());
         
+        //We close the connection.
+        this.isClose();
+        
         }catch(Exception e){
+            
+            System.out.println("the exception in searchByGenre was called.");
             e.printStackTrace();
+            //We close the connection.
+            this.isClose();
             return false;
         };
         
         return true;
     }
-        return false; }
+        return false;
+    }
+    
+    //constructor
+    public Cd(){
+        this.setMediaType(3);
+    }
     
 }
