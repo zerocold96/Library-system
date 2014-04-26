@@ -145,7 +145,8 @@ public class User {
         
         //if the query ran and we have more content than an array of 1;
         set.next();
-        if(set.getString("count") == null){
+     
+        if("0".equals(set.getString("count"))){
             setError("The User and password don't match.!");
         }else{
             setFirstName(set.getString("firstName"));

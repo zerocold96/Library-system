@@ -1,4 +1,4 @@
-
+package librarysystem;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
@@ -6,13 +6,13 @@ import java.util.*;
 
 public class LibrarySystemFrontPage extends JPanel
 {
-	private ImageIcon image = new ImageIcon("librarysystemimage.jpg");
-	private ImageIcon nsearchimage = new ImageIcon("nsearchimage.jpg");
-	private ImageIcon asearchimage = new ImageIcon("asearchimage.jpg");
-	private ImageIcon askalibrarianimage = new ImageIcon("askalibrarianimage.jpg");
-	private ImageIcon searchhistoryimage = new ImageIcon("searchhistoryimage.jpg");
-	private ImageIcon myaccountimage = new ImageIcon("myaccountimage.jpg");
-	private ImageIcon coursesreservedimage = new ImageIcon("coursesreservedimage.jpg");
+	private ImageIcon image = new ImageIcon(getClass().getResource("librarysystemimage.jpg"));
+	private ImageIcon nsearchimage = new ImageIcon(getClass().getResource("nsearchimage.jpg"));
+	private ImageIcon asearchimage = new ImageIcon(getClass().getResource("asearchimage.jpg"));
+	private ImageIcon askalibrarianimage = new ImageIcon(getClass().getResource("askalibrarianimage.jpg"));
+	private ImageIcon searchhistoryimage = new ImageIcon(getClass().getResource("searchhistoryimage.jpg"));
+	private ImageIcon myaccountimage = new ImageIcon(getClass().getResource("myaccountimage.jpg"));
+	private ImageIcon coursesreservedimage = new ImageIcon(getClass().getResource("coursesreservedimage.jpg"));
 
 
    	private JPanel frontpage = new JPanel(new BorderLayout());
