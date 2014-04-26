@@ -1,7 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-
+import java.util.*;
 
 public class Welcome extends JFrame {
 
@@ -14,16 +14,15 @@ JPanel panel = new JPanel();
 
 Welcome(){
 super("Welcome");
-setSize(300,200);
-setLocation(500,280);
+setSize(900,600);
+setLocation(26,70);
 panel.setLayout (null);
 
-welcome.setBounds(70,50,150,60);
+welcome.setBounds(70,50,350,60);
 
 panel.add(welcome);
 
 getContentPane().add(panel);
-setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 setVisible(true);
 }
 
