@@ -181,8 +181,30 @@ public class Movie extends Media{
         return false;
     }
     
+    public boolean updateDirector(String director){
+    if(this.isConnected()){
+        try{
+            //we create the statement 
+             Statement stmt = getCon().createStatement();
+        
+            //we query the category table
+             stmt.executeUpdate("UPDATE TABLE " + getMediaCategory() + " SET director = '" + director + "' WHERE ID = " + this.getId() + ";");
+            
+            this.isClose();
+            return true;
+            
+        }catch(Exception e){
+            e.printStackTrace();
+            return false;
+        }
+        
+    }
+        
+        return false;
+    }
+    
     public Movie(){
-        this.setMediaType(3);
+        super(2);
     }
     
 }

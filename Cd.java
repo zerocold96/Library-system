@@ -14,7 +14,7 @@ import java.sql.Statement;
  * @author zero
  */
 public class Cd extends Media{
-    private int mediaType = 3;
+   // private int mediaType = 3;
     private String artist = null;
     Cd[] cds;
 
@@ -182,9 +182,31 @@ public class Cd extends Media{
         return false;
     }
     
+    public boolean updateArtist(String artist){
+    if(this.isConnected()){
+        try{
+            //we create the statement 
+             Statement stmt = getCon().createStatement();
+        
+            //we query the category table
+             stmt.executeUpdate("UPDATE TABLE " + getMediaCategory() + " SET artist = '" + artist + "' WHERE ID = " + this.getId() + ";");
+            
+            this.isClose();
+            return true;
+            
+        }catch(Exception e){
+            e.printStackTrace();
+            return false;
+        }
+        
+    }
+        
+        return false;
+    }
+    
     //constructor
     public Cd(){
-        this.setMediaType(3);
+        super(3);
     }
     
 }

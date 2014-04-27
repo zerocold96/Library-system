@@ -35,6 +35,7 @@ public class Book extends Media{
         this.author = Author;
     }
     
+    @SuppressWarnings("empty-statement")
     public boolean searchByID(String ID) {
         //we open the connection.  
     if(this.isConnected()){
@@ -248,8 +249,51 @@ public class Book extends Media{
     }
         return false;
     }
+    public boolean updateAuthor(String author){
+    if(this.isConnected()){
+        try{
+            //we create the statement 
+             Statement stmt = getCon().createStatement();
+        
+            //we query the category table
+             stmt.executeUpdate("UPDATE TABLE " + getMediaCategory() + " SET author = '" + author + "' WHERE ID = " + this.getAuthor() + ";");
+            
+            this.isClose();
+            return true;
+            
+        }catch(Exception e){
+            e.printStackTrace();
+            return false;
+        }
+        
+    }
+        
+        return false;
+    }
+    
+    public boolean updateIsbn(String isbn){
+    if(this.isConnected()){
+        try{
+            //we create the statement 
+             Statement stmt = getCon().createStatement();
+        
+            //we query the category table
+             stmt.executeUpdate("UPDATE TABLE " + getMediaCategory() + " SET isbn = '" + isbn + "' WHERE ID = " + this.getId() + ";");
+            
+            this.isClose();
+            return true;
+            
+        }catch(Exception e){
+            e.printStackTrace();
+            return false;
+        }
+        
+    }
+        
+        return false;
+    }
     
     public Book(){
-        this.setMediaType(1);
+        super(1);
     }
 }
