@@ -4,30 +4,54 @@ import java.awt.*;
 import java.awt.event.*;
 import java.util.*;
 
-public class StudentPage extends JFrame {
+public class StudentPage extends JPanel
+{
+	private String userID;
+	private String userPass;
+//Student Entity Classes
+Student studentStudent = new Student(userID,userPass);
+Book bookStudent = new Book();
+Cd cdStudent = new Cd();
+Movie movieStudent = new Movie();
 
-public static void main(String[] args) {
-StudentPage frameTabel = new StudentPage();
-}
+//private ImageIcon studentImage = new ImageIcon("studentProfileimage.jpg");
 
 private JLabel welcome = new JLabel("Welcome Student to a The Library System");
-private JPanel panel = new JPanel();
+private JPanel studentPagePanel = new JPanel(new BorderLayout());
+private JPanel studentMenuBar = new JPanel(new GridLayout(1,6));
+private JPanel imagePanel = new JPanel();
+
+//Student Menu Bar Buttons
+private JButton payFinesButton = new JButton("PAY FINES");
+private JButton searchHistory = new JButton("SEARCH HISTORY");
+private JButton savedSearches = new JButton("SAVED SEARCHES");
+private JButton booksOnLoan = new JButton("BOOKS ON LOAN");
+//private JButton studentPageImage = new JButton(studentImage);
+
+//Student Profile Display
+//private JLabel studentNameLabel = new JLabel(student.getFirstName());
 
 
 
 StudentPage()
 {
-super("StudentPage");
-setSize(900,600);
-setLocation(26,70);
-panel.setLayout (null);
+studentMenuBar.add(payFinesButton);
+studentMenuBar.add(searchHistory);
+studentMenuBar.add(savedSearches);
+studentMenuBar.add(booksOnLoan);
 
-welcome.setBounds(70,50,350,60);
+//imagePanel.add(studentPageImage);
 
-panel.add(welcome);
 
-getContentPane().add(panel);
-setVisible(true);
+studentPagePanel.add(welcome,BorderLayout.NORTH);
+studentPagePanel.add(studentMenuBar,BorderLayout.CENTER);
+
+
+this.setLayout(new BorderLayout());
+this.add(studentPagePanel,BorderLayout.NORTH);
+//this.add(imagePanel,BorderLayout.SOUTH);
+
+
 }
 
 }

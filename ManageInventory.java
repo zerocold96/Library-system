@@ -2,53 +2,92 @@
  *
  * @author Shane
  */
+package librarysystem;
 
 public class ManageInventory {
     
         //Add Funciton
-        public void addToInventory(Book book, String title, author, genre, int isbn)
+        public void addToInventory(Book book,String ID, String title,String author,String genre,String isbn)
         {
-            Book book[] = new Book();
-            book.addToInventory(title, author, genre, isbn);
+            book.addToInventory(ID, title, author, genre, isbn);
         }
     
-        public void addToInventory(Cd cd, String title, artist, genre, int isbn)
+        public void addToInventory(Cd cd,String ID, String title,String artist,String genre)
         {
-            Cd cd[] = new Cd();
-            cd.addToInventory(title, artist, genre, isbn);
+            cd.addToInventory(ID, title, artist, genre);
         }
         
-        public void addToInventory(Movie movie, String title, director, genre, int isbn)
+        public void addToInventory(Movie movie,String ID, String title, String director, String genre)
         {
-            Movie movie[] = new Movie();
-            movie.addToInventory(title, director, genre, isbn);
+            movie.addToInventory(ID, title, director, genre);
         }
     
         //This is the remove function
-        public void removeToInventory(Book book, String title, author, genre, int isbn)
+        public void removeFromInventory(Book book)
         {
-            Book book[] = new Book();
-            book.removeToInventory(title, author, genre, isbn);
+            book.removeFromInventory(book.getTitle(), book.getAuthor(), book.getGenre(), book.getIsbn());
         }
     
-        public void removeToInventory(Cd cd, String title, artist, genre, int isbn)
+        public void removeFromInventory(Cd cd)
         {
-            Cd cd[] = new Cd();
-            cd.removeToInventory(title, artist, genre, isbn);
+            cd.removeFromInventory(cd.getTitle(), cd.getArtist(), cd.getGenre());
         }
         
-        public void removeToInventory(Movie movie, String title, director, genre, int isbn)
+        public void removeFromInventory(Movie movie)
         {
-            Movie movie[] = new Movie();
-            movie.removeToInventory(title, director, genre, isbn);
+            movie.removeFromInventory(movie.getTitle(), movie.getDirector(), movie.getGenre());
         }
     
    
         
-        public void updateInventory()
+        public void updateInventoryTitle(Book book, String title)
         {
+            book.updateTitle(title);
+        }
         
+        public void updateInventoryTitle(Cd cd, String title)
+        {
+            cd.updateTitle(title);
+        }
         
+        public void updateInventoryTitle(Movie movie, String title)
+        {
+            movie.updateTitle(title);
+        }
         
+        public void updateInventoryID(Book book, String ID){
+            book.updateID(ID);
+        }
+        
+        public void updateInventoryID(Cd cd, String ID){
+            cd.updateID(ID);
+        }
+        
+        public void updateInventoryID(Movie movie, String ID){
+            movie.updateID(ID);
+        }
+        
+        public void updateInventoryGenre(Book book, String genre){
+            book.updateGenre(genre);
+        }
+        
+        public void updateInventoryGenre(Cd cd, String genre){
+            cd.updateGenre(genre);
+        }
+        
+        public void updateInventoryGenre(Movie movie, String genre){
+            movie.updateGenre(genre);
+        }
+        
+        public void updateInventoryAuthor(Book book, String author){
+            book.updateAuthor(author);
+        }
+        
+        public void updateInventoryDirector(Movie movie, String director){
+            movie.updateDirector(director);
+        }
+        
+        public void updateInventoryArtist(Cd cd, String artist){
+            cd.updateArtist(artist);
         }
 }

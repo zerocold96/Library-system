@@ -1,3 +1,7 @@
+package librarysystem;
+
+import java.util.Stack;
+
 public class SearchHistory {
              Stack history = new Stack();
 
@@ -6,7 +10,7 @@ public class SearchHistory {
          
          this.history.push(searchItem);
     }
-    public void getHistory(){
+    public Stack getHistory(){
             return this.history;
     }
 }

@@ -21,7 +21,10 @@ public class LibrarySystemFrontPage extends JPanel
 	private JPanel sidemenu = new JPanel(new GridLayout (3,1));
 	private JPanel imageholder= new JPanel(new BorderLayout());
 
-
+        //getter and setter for JFrame
+        public JPanel getJPanel(){
+            return this;
+        }
 
 
 	private JButton imageButton=new JButton(image);
@@ -66,6 +69,7 @@ public class LibrarySystemFrontPage extends JPanel
   				//Search Bar
   				searchbar.add(searchText);
   				searchbar.add(searchButton);
+                                searchButton.addActionListener(new SearchListener());
 
 				//Background Image
   				imageholder.add(imageButton, BorderLayout.NORTH);
@@ -78,6 +82,7 @@ public class LibrarySystemFrontPage extends JPanel
 				this.setLayout(new BorderLayout());
 				this.add(frontpage,BorderLayout.NORTH);
 				this.add(imageholder,BorderLayout.SOUTH);
+                                
 
 	}
 
@@ -169,9 +174,18 @@ private class SearchListener implements ActionListener
 {
 	public void actionPerformed(ActionEvent search)
 	{
+                        SearchResult result = new SearchResult(searchText.getText());
 
+			//JFrame libraryAccount = new JFrame(); // creates a new JFrame
+                        getJPanel().remove(imageholder);
+			getJPanel().add(result); // add the panel to the frame
+			getJPanel().setVisible( true ); // show the frame
+                        getJPanel().revalidate();
+                        getJPanel().repaint();
 
 	}
+        
+        
 }
 
 

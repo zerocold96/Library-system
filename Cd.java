@@ -203,6 +203,104 @@ public class Cd extends Media{
         
         return false;
     }
+
+    public boolean searchByArtist(String artist) {
+    //we open the connection.  
+    if(this.isConnected()){
+        try{
+        //we create the statement 
+        Statement stmt = getCon().createStatement();
+        
+        //we query the category table
+        ResultSet set = stmt.executeQuery("SELECT * FROM CD WHERE artist = '" + artist + "';");
+        
+        
+        //We populate the array with all the element of the set.
+        
+        //We move to the last row in the set.
+        set.last();
+        
+        //we get the row number and assigned it as the total size of element in the array.
+        //book = new Book[set.getRow()];
+        this.cds = new Cd[set.getRow()];
+        
+        //We set the set cursor back to the first element.
+        set.first();
+        
+        //do- while loop will work here.
+        do{
+        this.cds[set.getRow() -1 ] = new Cd();
+        this.cds[set.getRow() -1].setId(set.getString("ID"));
+        this.cds[set.getRow() -1 ].setTitle(set.getString("title"));
+        this.cds[set.getRow() -1 ].setGenre(set.getString("genre"));
+        this.cds[set.getRow() -1 ].setArtist(set.getString("artist"));
+        //book[set.getRow() -1 ].setIsbn(set.getString("ISBN"));
+        
+        }while(set.next());
+        
+        //We close the connection.
+        this.isClose();
+        
+        }catch(Exception e){
+            
+            System.out.println("the exception in searchByGenre was called.");
+            e.printStackTrace();
+            //We close the connection.
+            this.isClose();
+            return false;
+        };
+        
+        return true;
+    }
+        return false;
+    }
+    
+    public boolean addToInventory(String ID,String title,String artist,String genre){
+        //we run the query here and we rturn true if the book is added
+        if(this.isConnected()){
+        try{
+            //we create the statement 
+             Statement stmt = getCon().createStatement();
+        
+            //we query the category table
+             stmt.executeUpdate("INSERT INTO cd (ID, title, artist, genre) values('" + ID + "','" + title + "','" + artist + "','" + genre + "');");
+            
+            this.isClose();
+            return true;
+            
+        }catch(Exception e){
+            e.printStackTrace();
+            return false;
+        }
+        
+    }
+        
+        return false;
+    }
+    
+    public boolean removeFromInventory(String title, String author,String genre){
+        //we run the query here and we rturn true if the book is added
+        if(this.isConnected()){
+        try{
+            //we create the statement 
+             Statement stmt = getCon().createStatement();
+        
+            //we query the category table
+             stmt.executeUpdate("DELETE FROM cd where title ='" + title + "' AND author ='" + author + "' AND genre ='" + genre + "';");
+            
+            this.isClose();
+            return true;
+            
+        }catch(Exception e){
+            e.printStackTrace();
+            return false;
+        }
+        
+    }
+        
+        return false;
+    }
+
     
     //constructor
     public Cd(){
