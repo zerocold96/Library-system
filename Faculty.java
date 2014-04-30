@@ -36,5 +36,11 @@ public Faculty(String facultyID, String facultyPass){
         
         
     }
+public Faculty(){
+    this.setUserCategoryID(2);
+    this.isConnected();
+    this.findCategoryTable(this.getUserCategoryID());
+    this.isClose();
+}
     
 }

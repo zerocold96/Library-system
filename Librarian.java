@@ -12,8 +12,16 @@ package librarysystem;
  */
 public class Librarian extends Member{
     
+//All Manage inventory belong to the ManageInvenotory Class 
+    
     public Librarian(String librarianID, String librarianPass){
         super(3, librarianID, librarianPass);
+    }
+    public Librarian(){
+    this.setUserCategoryID(3);
+    this.isConnected();
+    this.findCategoryTable(this.getUserCategoryID());
+    this.isClose();
     }
     
 }

@@ -20,9 +20,6 @@ public class Student extends User {
     public boolean hasHolds(){return false;};
     public boolean hasReserves(){return false;};
     
-    //Need to override so we know what we giving as a input
-    public void searchMedia(String name){}
-    
     public void viewHolds(){}
     
     //view the student information
@@ -31,6 +28,13 @@ public class Student extends User {
     //constructor
     public Student(String studentID, String studentPass){
         super(1, studentID, studentPass);
+    }
+    public Student(){
+    super();
+    this.setUserCategoryID(1);
+    this.isConnected();
+    this.findCategoryTable(this.getUserCategoryID());
+    this.isClose();
     }
 
     public String[] getReserves() {
@@ -48,6 +52,7 @@ public class Student extends User {
     public void setHolds(String[] holds) {
         this.holds = holds;
     }
+    
     
     
 }

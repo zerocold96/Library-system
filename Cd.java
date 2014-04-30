@@ -35,7 +35,7 @@ public class Cd extends Media{
         Statement stmt = getCon().createStatement();
         
         //we query the category table
-        ResultSet set = stmt.executeQuery("SELECT * FROM CD WHERE ID = '" + ID + "';");
+        ResultSet set = stmt.executeQuery("SELECT * FROM cd WHERE ID = '" + ID + "';");
         
         
         //We populate the array with all the element of the set.
@@ -87,7 +87,7 @@ public class Cd extends Media{
         Statement stmt = getCon().createStatement();
         
         //we query the category table
-        ResultSet set = stmt.executeQuery("SELECT * FROM CD WHERE title = '" + title + "';");
+        ResultSet set = stmt.executeQuery("SELECT * FROM cd WHERE title = '" + title + "';");
         
         
         //We populate the array with all the element of the set.
@@ -139,7 +139,7 @@ public class Cd extends Media{
         Statement stmt = getCon().createStatement();
         
         //we query the category table
-        ResultSet set = stmt.executeQuery("SELECT * FROM CD WHERE genre = '" + genre + "';");
+        ResultSet set = stmt.executeQuery("SELECT * FROM cd WHERE genre = '" + genre + "';");
         
         
         //We populate the array with all the element of the set.
@@ -212,7 +212,7 @@ public class Cd extends Media{
         Statement stmt = getCon().createStatement();
         
         //we query the category table
-        ResultSet set = stmt.executeQuery("SELECT * FROM CD WHERE artist = '" + artist + "';");
+        ResultSet set = stmt.executeQuery("SELECT * FROM cd WHERE artist = '" + artist + "';");
         
         
         //We populate the array with all the element of the set.

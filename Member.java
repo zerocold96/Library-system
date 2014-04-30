@@ -56,4 +56,8 @@ public class Member extends User{
         super(categoryID, memberID, memberPass);
     }
     
+    public Member(){
+    super();
+    }
+    
 }

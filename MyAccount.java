@@ -60,12 +60,12 @@ private class LoginListener implements ActionListener
                             Faculty faculty= new Faculty(userID,userPass);
                             Librarian librarian = new Librarian(userID,userPass);
                             
-				  if(student.isLoggedin())
+				   if(student.isLoggedin())
 		            {
 						StudentPage studentProfile=new StudentPage();
 
 						studentFrame.add(studentProfile); //Add the student Page Panel
-						studentFrame.setSize( 955,500 ); // Set studentFrame Size
+						studentFrame.setSize( 950,750 ); // Set studentFrame Size
 						studentFrame.setLocation(0,100);
 						studentFrame.setVisible( true ); // Show studentFrame
 
@@ -73,23 +73,37 @@ private class LoginListener implements ActionListener
 				  else if(faculty.isLoggedin())
 					{
 						FacultyPage facultyProfile=new FacultyPage();
-						facultyProfile.setVisible(true);
+
+						facultyFrame.add(facultyProfile); //Add the Faculty Page Panel
+						facultyFrame.setSize( 950,750 ); // Set facultyFrame Size
+						facultyFrame.setLocation(0,100);
+						facultyFrame.setVisible( true ); // Show facultyFrame
+
 					}
 				  else if(librarian.isLoggedin())
 					{
 						LibrarianPage librarianProfile=new LibrarianPage();
-						librarianProfile.setVisible(true);
+
+						librarianFrame.add(librarianProfile); //Add the librarian Page Panel
+						librarianFrame.setSize( 950,750 ); // Set librarianFrame Size
+						librarianFrame.setLocation(0,100);
+						librarianFrame.setVisible( true ); // Show librarianFrame
+
 					}
 				  else if(admin.isLoggedin())
 					{
 						AdminPage adminProfile=new AdminPage();
-						adminProfile.setVisible(true);
+
+						adminFrame.add(adminProfile); //Add the Admin Page Panel
+						adminFrame.setSize( 950,750 ); // Set adminFrame Size
+						adminFrame.setLocation(0,100);
+						adminFrame.setVisible( true ); // Show adminFrame
 					}
 
 
 				  else
 		            {
-						JOptionPane.showMessageDialog(null,"Invalid LoginID or Password");
+				JOptionPane.showMessageDialog(null,"Invalid LoginID or Password");
 		                loginIDText.setText("");
 		                passwordText.setText("");
 		                loginIDText.requestFocus();

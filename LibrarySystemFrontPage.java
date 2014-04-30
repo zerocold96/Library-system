@@ -93,15 +93,19 @@ private class MenuListener implements ActionListener
    		// New Search Clicked
    		if (buttonClicked.getSource() == nSearch)
    		{
-			return;
-			/*NewSearch newSearch = new AskALibrarian();
-
+			LibrarySystemFrontPage newSearch = new LibrarySystemFrontPage();
+                        getJPanel().removeAll();
+                        getJPanel().add(newSearch);
+                        getJPanel().revalidate();
+                        getJPanel().repaint();
+                        /*
 			JFrame libraryNew = new JFrame(); // creates a new JFrame
+                        libraryNew.setResizable(false);
 			libraryNew.add(newSearch); // add the panel to the frame
-			libraryNew.setSize( 900,600 ); // set the desired size
+			libraryNew.setSize( 950,750 ); // set the desired size
 			libraryNew.setVisible( true ); // show the frame
-			*/
-		}
+		*/
+                }
 
 		// Advanced Search Clicked
 		else if (buttonClicked.getSource() == aSearch)
@@ -144,7 +148,7 @@ private class MenuListener implements ActionListener
 		// Ask A Librarian
 		else if (buttonClicked.getSource() == ask)
    		{
-			return;
+			
 			/*AskALibrarian ask = new AskALibrarian();
 
 			//JFrame libraryAsk = new JFrame(); // creates a new JFrame
@@ -152,6 +156,8 @@ private class MenuListener implements ActionListener
 			//libraryAsk.setSize( 900,600 ); // set the desired size
 			//libraryAsk.setVisible( true ); // show the frame
 			*/
+                  JOptionPane.showMessageDialog(null,"Have a Question"+"\n Hours: 7:30 - 9:00" +"\n Phone#: 706-555-5555" +"\n Email: librarysystem@ung.edu" );
+		
 		}
 		// Login Clicked
 		else if (buttonClicked.getSource() == myAccount)
@@ -175,7 +181,6 @@ private class SearchListener implements ActionListener
 	public void actionPerformed(ActionEvent search)
 	{
                         SearchResult result = new SearchResult(searchText.getText());
-
 			//JFrame libraryAccount = new JFrame(); // creates a new JFrame
                         getJPanel().remove(imageholder);
 			getJPanel().add(result); // add the panel to the frame

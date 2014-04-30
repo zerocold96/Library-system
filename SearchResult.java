@@ -6,8 +6,10 @@
 
 package librarysystem;
 
+import java.awt.BorderLayout;
 import java.awt.Graphics;
 import java.awt.GridLayout;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
@@ -17,14 +19,22 @@ import javax.swing.JPanel;
  * @author zero
  */
 public class SearchResult extends JPanel {
-    private String text = "Hellow world!";
-    private JPanel menubar = new JPanel(new GridLayout(1,6));
+    //we define the grid
+    private GridLayout grid = new GridLayout(0,4);
+    //we crete the menubar and added the grid to it
+    private JPanel menubar = new JPanel(grid);
+    ImageIcon bookJpg = new ImageIcon(getClass().getResource("book.jpg"));
+    ImageIcon cdJpg = new ImageIcon(getClass().getResource("cd.jpg"));
+    ImageIcon movieJpg = new ImageIcon(getClass().getResource("movie.jpg"));
+    
+    public JPanel getPanel(){
+        return this;
+    }
     
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         
-        g.drawString(text, 75, 75);
     }
     
     public SearchResult(){
@@ -32,32 +42,80 @@ public class SearchResult extends JPanel {
     }
     
     public SearchResult(String data){
-        this.add(menubar);
-        int i = 0;
+       
+        getPanel().setLayout(new BorderLayout());
+        getPanel().add(menubar,BorderLayout.BEFORE_LINE_BEGINS);
         
-        //we perform the search 
-        MediaSearch search = new MediaSearch();
-        //we search in books first.
         Book book = new Book();
-        //Book[] books = search.searchMedia(book, 1, data);
+        
+        if(book.searchByAuthor(data)){
+            for(int i = 0; i < book.books.length; i ++){
+                JButton bookPic = new JButton(book.books[i].getTitle(),bookJpg);   
+                menubar.add(bookPic);
+            }
+        }
+        
+        else if(book.searchByGenre(data)){
+            for(int i = 0; i < book.books.length; i ++){
+                JButton bookPic = new JButton(book.books[i].getTitle(),bookJpg);   
+                menubar.add(bookPic);
+            }
+        }
+        
+        else if(book.searchByTitle(data)){
+            for(int i = 0; i < book.books.length; i ++){
+                JButton bookPic = new JButton(book.books[i].getTitle(),bookJpg);   
+                menubar.add(bookPic);
+            }
+        }
         
         
-            menubar.add(new JButton());
         
-        //Here we can add a button image with a book
-        /*
-        search.searchMedia(book, 2, data);
-        search.searchMedia(book, 3, data);
-        
+  
         Cd cd = new Cd();
-        search.searchMedia(cd, 1, data);
-        search.searchMedia(cd, 2, data);
-        search.searchMedia(cd, 3, data);
+        
+        if(cd.searchByArtist(data)){
+            for(int i = 0; i < cd.cds.length; i ++){
+            JButton cdPic = new JButton(cd.cds[i].getTitle(), cdJpg);
+            menubar.add(cdPic);
+            }
+        }
+        
+        if(cd.searchByGenre(data)){
+            for(int i = 0; i < cd.cds.length; i ++){
+            JButton cdPic = new JButton(cd.cds[i].getTitle(), cdJpg);
+            menubar.add(cdPic);
+            }
+        }
+        
+        if(cd.searchByTitle(data)){
+            for(int i = 0; i < cd.cds.length; i ++){
+            JButton cdPic = new JButton(cd.cds[i].getTitle(), cdJpg);
+            menubar.add(cdPic);
+            }
+        }
+        
         
         Movie movie = new Movie();
-        search.searchMedia(movie, 1, data);
-        search.searchMedia(movie, 2, data);
-        search.searchMedia(movie, 3, data);
-        */
+        
+        if(movie.searchByDirector(data)){
+            for(int i = 0; i < movie.movies.length; i ++){
+            JButton moviePic = new JButton(movie.movies[i].getTitle(), movieJpg);
+            menubar.add(moviePic);
+            }
+        }
+        if(movie.searchByGenre(data)){
+            for(int i = 0; i < movie.movies.length; i ++){
+            JButton moviePic = new JButton(movie.movies[i].getTitle(), movieJpg);
+            menubar.add(moviePic);
+            }
+        }
+        if(movie.searchByTitle(data)){
+             for(int i = 0; i < movie.movies.length; i ++){
+            JButton moviePic = new JButton(movie.movies[i].getTitle(), movieJpg);
+            menubar.add(moviePic);
+            }
+        }
+        
     }
 }

@@ -21,11 +21,7 @@ public class Admin extends Member{
         return true;
     }
     
-    //remove user here we feed a user.
-    public boolean removeUser(User user){
-        
-        return true;
-    }
+
     
     public boolean changeUserPassword(User user){
     
@@ -35,6 +31,12 @@ public class Admin extends Member{
     public Admin(String adminID, String adminPass){
         super(4, adminID, adminPass);
         
+    }
+    public Admin(){
+    this.setUserCategoryID(4);
+    this.isConnected();
+    this.findCategoryTable(this.getUserCategoryID());
+    this.isClose();
     }
     
 }

@@ -106,7 +106,7 @@ public class User {
         }
     }
     
-    private boolean isConnected(){
+    public boolean isConnected(){
         try{
             String url =
  "jdbc:mysql://localhost:3306/library";
@@ -158,6 +158,59 @@ public class User {
         
         }
     }
+    public boolean add(){
+        if(this.isConnected()){
+        try{
+        //we create the statement 
+        Statement stmt = getCon().createStatement();
+        
+        //we query the category table
+        stmt.executeUpdate("INSERT INTO " + this.getUserCategoryName() +" (ID, firstName, LastName,pass ) VALUES('" + this.getID() + "','" + this.getFirstName() + "','" + this.getLastName() + "','" + this.getPass() + "');" );
+            
+        
+        //We close the connection.
+        this.isClose();
+        
+        }catch(Exception e){
+            
+            System.out.println("the exception in searchByGenre was called.");
+            e.printStackTrace();
+            //We close the connection.
+            this.isClose();
+            return false;
+        };
+        
+        return true;
+    }
+        return false;
+    }
+    
+    public boolean remove(){
+        if(this.isConnected()){
+        try{
+        //we create the statement 
+        Statement stmt = getCon().createStatement();
+        
+        //we query the category table
+        stmt.executeUpdate("DELETE FROM " + this.getUserCategoryName() +" WHERE ID = '" + this.getID() + "';" );
+            
+        
+        //We close the connection.
+        this.isClose();
+        
+        }catch(Exception e){
+            
+            System.out.println("the exception in searchByGenre was called.");
+            e.printStackTrace();
+            //We close the connection.
+            this.isClose();
+            return false;
+        };
+        
+        return true;
+    }
+        return false;
+    }
     
     
     //If we have no errors then we know we have been loggedin
@@ -169,6 +222,9 @@ public class User {
             return false;
         }
     }
+     public User(){
+     
+     }
      
     public User(int categoryID, String ID,String pass){
         //Check to make sure all fields are not null
